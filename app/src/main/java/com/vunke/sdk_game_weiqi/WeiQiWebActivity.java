@@ -182,7 +182,6 @@ public class WeiQiWebActivity extends AppCompatActivity {
         }
         finish();
 //        System.exit(0);
-        android.os.Process.killProcess(android.os.Process.myPid());
     }
     public void goBack(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -198,8 +197,73 @@ public class WeiQiWebActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        android.os.Process.killProcess(android.os.Process.myPid());
+    protected void onResume() {
+        Log.i(TAG, "onResume: ");
+        super.onResume();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            web.evaluateJavascript("javascript:onResume()", new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String value) {
+                    //此处为 js 返回的结果
+                }
+            });
+        }else{
+            web.loadUrl("javascript:onResume()");
+        }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause: ");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            web.evaluateJavascript("javascript:onPause()", new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String value) {
+                    //此处为 js 返回的结果
+                }
+            });
+        }else{
+            web.loadUrl("javascript:onPause()");
+        }
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        Log.i(TAG, "onTrimMemory: ");
+        switch(level){
+            case TRIM_MEMORY_UI_HIDDEN:
+                Log.i(TAG, "onTrimMemory: level:TRIM_MEMORY_UI_HIDDEN");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    web.evaluateJavascript("javascript:ui_hidden()", new ValueCallback<String>() {
+                        @Override
+                        public void onReceiveValue(String value) {
+                            //此处为 js 返回的结果
+                        }
+                    });
+                }else{
+                    web.loadUrl("javascript:onTrimMemory()");
+                }
+                break;
+            case TRIM_MEMORY_RUNNING_MODERATE:
+                Log.i(TAG, "onTrimMemory: level:TRIM_MEMORY_RUNNING_MODERATE");
+                break;
+            case TRIM_MEMORY_RUNNING_LOW:
+                Log.i(TAG, "onTrimMemory: level:TRIM_MEMORY_RUNNING_LOW");
+                break;
+            case TRIM_MEMORY_RUNNING_CRITICAL:
+                Log.i(TAG, "onTrimMemory: level:TRIM_MEMORY_RUNNING_CRITICAL");
+                break;
+        }
+        System.gc();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy: ");
+        super.onDestroy();
+    }
+
+
 }
