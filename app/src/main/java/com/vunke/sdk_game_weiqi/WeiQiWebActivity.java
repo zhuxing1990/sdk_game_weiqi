@@ -42,7 +42,7 @@ public class WeiQiWebActivity extends AppCompatActivity {
         getAppIntent(intent);
     }
 //    private String LoadUrl = "http://124.232.136.236:8099/GoGame/indexNoResponse.html";
-    private String LoadUrl = "http://120.76.235.37:9091/GoGame/indexNoResponse.html";
+    private String LoadUrl = "http://172.18.70.184/GoGame/indexNoResponse.html";
     private void getAppIntent(Intent intent) {
         Log.i(TAG, "getAppIntent: ");
         if (null == intent){

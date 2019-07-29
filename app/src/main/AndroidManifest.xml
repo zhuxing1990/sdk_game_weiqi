@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vunke.sdk_game_weiqi">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,12 +14,14 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name="com.vunke.sdk_game_weiqi.WeiQiWebActivity"
             android:hardwareAccelerated="true"
+            android:exported="true"
+            android:enabled="true"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 
