@@ -15,7 +15,6 @@
         <activity android:name="com.vunke.sdk_game_weiqi.WeiQiWebActivity"
             android:hardwareAccelerated="true"
             android:exported="true"
-            android:enabled="true"
             android:launchMode="singleTop">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
