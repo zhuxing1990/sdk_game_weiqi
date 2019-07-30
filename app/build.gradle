@@ -9,8 +9,8 @@ android {
 //        applicationId "com.vunke.sdk_game_weiqi"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 11
-        versionName "1.1_test"
+        versionCode 12
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
