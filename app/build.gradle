@@ -1,9 +1,12 @@
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+// add these
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.vunke.sdk_game_weiqi"
+//        applicationId "com.vunke.sdk_game_weiqi"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 11
