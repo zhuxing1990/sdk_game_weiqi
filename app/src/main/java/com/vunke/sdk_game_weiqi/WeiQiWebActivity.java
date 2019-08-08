@@ -1,6 +1,5 @@
 package com.vunke.sdk_game_weiqi;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -26,7 +25,7 @@ import org.json.JSONObject;
 public class WeiQiWebActivity extends AppCompatActivity {
     private static final String TAG = "WeiQiWebActivity";
     private WebView web;
-    private ProgressDialog dialog = null;
+//    private ProgressDialog dialog = null;
     private long exitTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +113,7 @@ public class WeiQiWebActivity extends AppCompatActivity {
     }
 
     private void initWebView() {
-        dialog = ProgressDialog.show(this, null, "页面加载中，请稍后..");
+//        dialog = ProgressDialog.show(this, null, "页面加载中，请稍后..");
         web = findViewById(R.id.webordey);
         web.getSettings().setJavaScriptEnabled(true);
 
@@ -133,7 +132,7 @@ public class WeiQiWebActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                dialog.dismiss();
+//                dialog.dismiss();
             }
 
             @Override
