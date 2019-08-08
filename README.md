@@ -22,7 +22,7 @@ Step 2. Add the dependency
 	}
 Share this release:
 
-Tweet      [![](https://jitpack.io/v/zhuxing1990/sdk_game_weiqi.svg)](https://jitpack.io/#zhuxing1990/sdk_game_weiqi)      Link
+Tweet      [![](https://jitpack.io/v/zhuxing1990/sdk_game_weiqi.svg)](https://jitpack.io/#zhuxing1990/sdk_game_weiqi)     Link
 
 
 That's it! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
