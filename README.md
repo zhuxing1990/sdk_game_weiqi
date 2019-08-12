@@ -18,7 +18,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.zhuxing1990:sdk_game_weiqi:V1.1'
+	     implementation 'com.github.zhuxing1990:sdk_game_weiqi:1.5'
 	}
 Share this release:
 
