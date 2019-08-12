@@ -1,6 +1,7 @@
 package com.vunke.sdk_game_weiqi;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.vunke.sdk_game_weiqi.javascriptInterface.JavaScriptObject;
 import com.vunke.sdk_game_weiqi.modle.StartAppsBean;
+import com.vunke.sdk_game_weiqi.receiver.HomeReceiver;
 import com.vunke.sdk_game_weiqi.util.Utils;
 
 import org.json.JSONObject;
@@ -27,6 +29,7 @@ public class WeiQiWebActivity extends AppCompatActivity {
     private WebView web;
 //    private ProgressDialog dialog = null;
     private long exitTime = 0;
+    private  HomeReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +37,18 @@ public class WeiQiWebActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_weiqiweb);
+        initHomeReceiver();
         initWebView();
         getAppIntent(getIntent());
+
+    }
+
+    private void initHomeReceiver() {
+        Log.i(TAG, "initHomeReceiver: ");
+        receiver = new HomeReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        registerReceiver(receiver, filter);
     }
 
     @Override
@@ -265,6 +278,18 @@ public class WeiQiWebActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.i(TAG, "onDestroy: ");
         super.onDestroy();
+        try {
+            unRegister();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void unRegister() {
+        Log.i(TAG, "unRegister: ");
+        if (receiver!=null){
+            unregisterReceiver(receiver);
+        }
     }
 
 

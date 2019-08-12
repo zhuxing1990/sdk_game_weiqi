@@ -796,4 +796,11 @@ public class Utils {
             Log.e(TAG, "PutAllExtra key value 长度不一致 ",e);
         }
     }
+
+    public static  void SendBroadcastHomeKey(Context context){
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        intent.setAction("com.haoke.ydwq.activity.HomeKey");
+        context.sendBroadcast(intent);
+    }
 }
